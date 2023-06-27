@@ -7,6 +7,20 @@
 
 import SwiftUI
 
+struct PokemonModel {
+    var nome: String
+    var tipo: [String]
+    var sprite: Sprites
+}
+
+class PokemonViewModel: ObservableObject{
+    @Published var pokemonList: [PokemonModel] = []
+    
+    init(){
+        
+    }
+}
+
 struct Pokemon: Codable, Hashable {
     var name: String
     var url: String
