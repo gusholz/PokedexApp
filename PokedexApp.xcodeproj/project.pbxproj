@@ -11,6 +11,10 @@
 		8094AB502A4646EA000240A5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8094AB4F2A4646EA000240A5 /* ContentView.swift */; };
 		8094AB522A4646EA000240A5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8094AB512A4646EA000240A5 /* Assets.xcassets */; };
 		8094AB552A4646EA000240A5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8094AB542A4646EA000240A5 /* Preview Assets.xcassets */; };
+		80A13C7E2A4E16FC0038CBED /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A13C7D2A4E16FC0038CBED /* Enums.swift */; };
+		80A13C802A4E172E0038CBED /* PokemonDetailedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A13C7F2A4E172E0038CBED /* PokemonDetailedView.swift */; };
+		80A13C822A4E18590038CBED /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A13C812A4E18590038CBED /* Models.swift */; };
+		80A13C842A4E2BE10038CBED /* PokemonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A13C832A4E2BE10038CBED /* PokemonViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +23,10 @@
 		8094AB4F2A4646EA000240A5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		8094AB512A4646EA000240A5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8094AB542A4646EA000240A5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		80A13C7D2A4E16FC0038CBED /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
+		80A13C7F2A4E172E0038CBED /* PokemonDetailedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonDetailedView.swift; sourceTree = "<group>"; };
+		80A13C812A4E18590038CBED /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		80A13C832A4E2BE10038CBED /* PokemonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,9 +59,10 @@
 		8094AB4C2A4646EA000240A5 /* PokedexApp */ = {
 			isa = PBXGroup;
 			children = (
-				8094AB5B2A4650AC000240A5 /* New Group */,
 				8094AB4D2A4646EA000240A5 /* PokedexAppApp.swift */,
-				8094AB4F2A4646EA000240A5 /* ContentView.swift */,
+				80A13C7C2A4E16E70038CBED /* Enums */,
+				80A13C7B2A4E16D70038CBED /* Views */,
+				8094AB5B2A4650AC000240A5 /* Models */,
 				8094AB512A4646EA000240A5 /* Assets.xcassets */,
 				8094AB532A4646EA000240A5 /* Preview Content */,
 			);
@@ -68,11 +77,30 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		8094AB5B2A4650AC000240A5 /* New Group */ = {
+		8094AB5B2A4650AC000240A5 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				80A13C812A4E18590038CBED /* Models.swift */,
 			);
-			path = "New Group";
+			path = Models;
+			sourceTree = "<group>";
+		};
+		80A13C7B2A4E16D70038CBED /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8094AB4F2A4646EA000240A5 /* ContentView.swift */,
+				80A13C7F2A4E172E0038CBED /* PokemonDetailedView.swift */,
+				80A13C832A4E2BE10038CBED /* PokemonViewModel.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		80A13C7C2A4E16E70038CBED /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				80A13C7D2A4E16FC0038CBED /* Enums.swift */,
+			);
+			path = Enums;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -145,8 +173,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				80A13C802A4E172E0038CBED /* PokemonDetailedView.swift in Sources */,
 				8094AB502A4646EA000240A5 /* ContentView.swift in Sources */,
+				80A13C842A4E2BE10038CBED /* PokemonViewModel.swift in Sources */,
+				80A13C7E2A4E16FC0038CBED /* Enums.swift in Sources */,
 				8094AB4E2A4646EA000240A5 /* PokedexAppApp.swift in Sources */,
+				80A13C822A4E18590038CBED /* Models.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
