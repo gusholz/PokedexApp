@@ -11,7 +11,7 @@ struct ContentView: View {
     
     @State private var pokemonsList: [PokemonModel] = []
     @State private var pokemonViewList: [PokemonModel] = []
-    
+    @State var pressedXtimes: Int = 0
     @State private var searchTerm: String = ""
     
     var pokemonVM = PokemonViewModel()
@@ -34,7 +34,7 @@ struct ContentView: View {
                     }else{
                         pokemonViewList = pokemonsList.filter{ pokemon in
                             pokemon.nome!.contains(searchTerm.lowercased())
-                        }
+                        }.sorted(by: { $0.id < $1.id} )
                     }
                 }
                 .padding()
@@ -44,11 +44,32 @@ struct ContentView: View {
                 }
                 .foregroundColor(.yellow)
             }
+            .padding(.bottom)
+            Button("Organizar por peso", action: {
+                if pressedXtimes % 2 == 0 {
+                    pokemonViewList = pokemonsList.sorted(by: {$0.weight > $1.weight})
+                } else {
+                    pokemonViewList = pokemonsList.sorted(by: {$0.weight < $1.weight})
+                }
+                
+                pressedXtimes += 1
+            })
+            .padding()
+            .background{
+                RoundedRectangle(cornerRadius: 12)
+                    .foregroundColor(.blue)
+            }
+            .foregroundColor(.yellow)
             List {
                 ForEach(pokemonViewList, id: \.id) { pokemon in
                     PokemonDetailedView(pokemon: pokemon)
                 }
             }
+            .scrollContentBackground(.hidden)
+            .overlay(
+                RoundedRectangle(cornerRadius: 12)
+                    .stroke(.yellow, lineWidth: 2)
+            )
         }
         .padding()
         .background(.red)

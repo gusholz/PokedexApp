@@ -12,6 +12,7 @@ struct PokemonModel: Codable, Identifiable{
     var nome: String?
     var tipo: [PokemonType]? = []
     var sprite: Sprites?
+    var weight: Int
 }
 
 struct Pokemon: Codable, Hashable {

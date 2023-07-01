@@ -24,8 +24,12 @@ struct PokemonDetailedView: View {
                         Text(type.name.capitalized)
                             .font(.subheadline)
                     }
-                
-            }.padding(.top,10)
+                Text("Peso")
+                    .font(.headline)
+                    .padding(.top)
+                Text("\(pokemon.weight)")
+            }
+            .padding(.top,10)
             HStack {
                 AsyncImage(url: URL(string: pokemon.sprite?.frontDefault ?? "")) { image in
                     image
