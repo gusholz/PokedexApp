@@ -11,7 +11,7 @@ struct ContentView: View {
     
     @State private var pokemonsList: [PokemonModel] = []
     @State private var pokemonViewList: [PokemonModel] = []
-    @State var pressedXtimes: Int = 0
+    @State private var pressedXtimes: Int = 0
     @State private var searchTerm: String = ""
     
     var pokemonVM = PokemonViewModel()
