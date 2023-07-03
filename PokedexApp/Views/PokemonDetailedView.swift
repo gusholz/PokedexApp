@@ -24,10 +24,21 @@ struct PokemonDetailedView: View {
                         Text(type.name.capitalized)
                             .font(.subheadline)
                     }
-                Text("Peso")
-                    .font(.headline)
-                    .padding(.top)
-                Text("\(pokemon.weight)")
+                HStack {
+                    VStack {
+                        Text("Peso")
+                            .font(.headline)
+                            .padding(.top)
+                        Text("\(pokemon.weight)")
+                    }
+                    Spacer()
+                    VStack {
+                        Text("Altura")
+                            .font(.headline)
+                            .padding(.top)
+                        Text("\(pokemon.height)")
+                    }
+                }
             }
             .padding(.top,10)
             HStack {

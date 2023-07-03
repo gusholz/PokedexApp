@@ -33,9 +33,11 @@ class PokemonViewModel: ObservableObject {
                     group.addTask {
                         let types = try await self.fetchPokemonTypes(pokemonName: pokemon.name)
                         let sprites = try await self.fetchPokemonSprites(pokemonName: pokemon.name)
-                        let id = try await self.fetchPokemonID(pokemonName: pokemon.name)
-                        let weight = try await self.fetchPokemonWeight(pokemonName: pokemon.name)
-                        return PokemonModel(id: id,nome: pokemon.name, tipo: types, sprite: sprites, weight: weight)
+                        let details = try await self.fetchPokemonDetails(pokemonName: pokemon.name)
+                        let weight = details[0]
+                        let height = details[1]
+                        let id = details[2]
+                        return PokemonModel(id: id,nome: pokemon.name, tipo: types, sprite: sprites, weight: weight, height: height)
                     }
                 }
                 
@@ -98,7 +100,7 @@ class PokemonViewModel: ObservableObject {
         }
     }
     
-    func fetchPokemonID(pokemonName: String) async throws -> Int {
+    func fetchPokemonDetails(pokemonName: String) async throws -> [Int]{
         let pokeApiPokemonSprite = "https://pokeapi.co/api/v2/pokemon/\(pokemonName)"
         
         guard let url = URL(string: pokeApiPokemonSprite) else{
@@ -115,31 +117,7 @@ class PokemonViewModel: ObservableObject {
             let decoder = JSONDecoder()
             decoder.keyDecodingStrategy = .convertFromSnakeCase
             let pokemonDetails = try decoder.decode(PokemonModel.self, from: data)
-            return pokemonDetails.id
-        } catch {
-            print("Error: \(error.localizedDescription)")
-            throw NetworkError.invalidConversion
-        }
-    }
-    
-    func fetchPokemonWeight(pokemonName: String) async throws -> Int {
-        let pokeApiPokemonSprite = "https://pokeapi.co/api/v2/pokemon/\(pokemonName)"
-        
-        guard let url = URL(string: pokeApiPokemonSprite) else{
-            throw NetworkError.invalidURL
-        }
-        
-        let (data, response) = try await URLSession.shared.data(from: url)
-        
-        guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-            throw NetworkError.invalidResponse
-        }
-        
-        do {
-            let decoder = JSONDecoder()
-            decoder.keyDecodingStrategy = .convertFromSnakeCase
-            let pokemonDetails = try decoder.decode(PokemonModel.self, from: data)
-            return pokemonDetails.weight
+            return [pokemonDetails.weight, pokemonDetails.height, pokemonDetails.id]
         } catch {
             print("Error: \(error.localizedDescription)")
             throw NetworkError.invalidConversion

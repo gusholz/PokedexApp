@@ -60,6 +60,21 @@ struct ContentView: View {
                     .foregroundColor(.blue)
             }
             .foregroundColor(.yellow)
+            Button("Organizar por altura", action: {
+                if pressedXtimes % 2 == 0 {
+                    pokemonViewList = pokemonsList.sorted(by: {$0.height > $1.height})
+                } else {
+                    pokemonViewList = pokemonsList.sorted(by: {$0.height < $1.height})
+                }
+                
+                pressedXtimes += 1
+            })
+            .padding()
+            .background{
+                RoundedRectangle(cornerRadius: 12)
+                    .foregroundColor(.blue)
+            }
+            .foregroundColor(.yellow)
             List {
                 ForEach(pokemonViewList, id: \.id) { pokemon in
                     PokemonDetailedView(pokemon: pokemon)
